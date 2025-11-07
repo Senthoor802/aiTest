@@ -1,0 +1,9 @@
+repos:
+  - repo: local
+    hooks:
+      - id: pylint
+        name: pylint
+        entry: .venv/Scripts/python.exe -m pylint  # Forward slashes for compatibility
+        args: [--rcfile=.pylintrc]
+        language: system
+        types: [python]

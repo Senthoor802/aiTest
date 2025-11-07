@@ -1,0 +1,76 @@
+[MASTER]
+# Specify a configuration file.
+rcfile=
+
+# Python code to analyze
+ignore=venv, .venv, migrations, __pycache__, build, dist, docs, drivers, reports, requirements, resources, e2e, e2e_scripts, test_scripts, test_api, test_db, test_desktop, test_mobie
+
+# Files or directories to be skipped. They should be base names, not paths.
+ignore-patterns=.*\.csv$
+
+# Allow loading of arbitrary C extensions. Extensions are imported into the active Python interpreter and may run arbitrary code.
+extension-pkg-whitelist=pytest_bdd, selenium, numpy
+
+[MESSAGES CONTROL]
+# Only show warnings/errors (disable informational messages)
+disable=
+    C0114,  # Missing module docstring
+    C0115,  # Missing class docstring
+    C0116,  # Missing function or method docstring
+    R0903,  # Too few public methods
+    R0801,  # Duplicate code
+    W0511,  # TODO comments
+    W0401,  # Wildcard import
+    C0103,  #snake case name "foo_bar" (invalid-name)
+    W0602,  # Using the global statement
+    W0603,  # Using the global statement
+
+[REPORTS]
+# Set the output format. Available formats are text, parseable, colorized, json, msvs (visual studio) and html.
+output-format=colorized
+
+# Tells whether to display a full report or only the messages.
+reports=no
+
+[FORMAT]
+# Maximum number of characters on a single line.
+max-line-length=280
+
+# String used as indentation unit. This is usually "    " (4 spaces) or "\t" (1 tab).
+indent-string='    '
+
+[DESIGN]
+# Maximum number of arguments for function / method.
+max-args=10
+
+# Maximum number of boolean expressions in an if statement (see R0916).
+max-bool-expr=10
+
+# Maximum number of positional arguments for function / method.
+max-positional-arguments=8
+
+# Maximum number of attributes for a class (see R0902).
+max-attributes=15
+
+# Maximum number of public methods for a class (see R0904).
+max-public-methods=40
+
+[LOGGING]
+# Format style used to check string formatting in logging function calls.
+logging-format-style=old
+
+[SIMILARITIES]
+# Minimum lines number of a similarity.
+min-similarity-lines=4
+
+[TYPECHECK]
+# List of module names for which member attributes should not be checked (useful for modules/projects where namespaces are manipulated during runtime and thus existing member attributes cannot be deduced by static analysis). It supports qualified module names, as well as Unix pattern matching.
+ignored-modules=numpy, pandas, pytest, selenium, config
+
+[IMPORTS]
+# Allow wildcard imports globally (set to yes or no)
+allow-wildcard-with-all=no
+
+[EXCEPTIONS]
+# Exceptions that will emit a warning when being caught. Defaults to "Exception"
+overgeneral-exceptions=builtins.Exception, builtins.BaseException

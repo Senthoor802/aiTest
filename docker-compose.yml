@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  selenium-hub:
+    image: selenium/hub
+    container_name: selenium-hub
+    ports:
+      - "4444:4444"
+
+  chrome:
+    image: selenium/node-chrome
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=selenium-hub
+      - WDM_LOG_LEVEL=0
+      - WDM_LOCAL=True
+    ports:
+      - "5900:5900"
+
+  test-runner:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - selenium-hub
+    environment:
+      - PYTHONPATH=/usr/app
+    volumes:
+      - .:/usr/app
+    command: ["--tags", "bdd"]
+    shm_size: '2gb'  # Increase shared memory size
